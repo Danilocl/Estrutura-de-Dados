@@ -20,13 +20,15 @@ public class TesteLInearSearch {
 		for (int i = 0; i < size; i++) {
 			list.insertTail(rand.nextInt(20));
 		}
-		
-		list.LinearSearch(15);
-		
+
 		System.out.println(list.toString());
-		
+
 		list.bubbleSort();
-		
-		System.out.println(list.toString());
+
+		System.out.println("\n" + list.toString());
+		System.out.println();
+		list.LinearSearch(15);
+		System.out.println();
+		list.binarySearch(05);
 	}
 }
