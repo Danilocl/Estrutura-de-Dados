@@ -7,18 +7,20 @@ import javax.swing.text.StyledEditorKit.ForegroundAction;
 import org.omg.IOP.CodecPackage.FormatMismatch;
 
 import list.DLinkedList;
+import list.RecursividadeBinarySearch;
 
-public class TesteLInearSearch {
+public class TesteSearch {
 
 	public static void main(String[] args) {
 
 		Random rand = new Random();
-		int size = 10;
+		int[] array = new int[10];
 
 		DLinkedList list = new DLinkedList();
 
-		for (int i = 0; i < size; i++) {
-			list.insertTail(rand.nextInt(20));
+		for (int i = 0; i < array.length; i++) {
+			array[i] = rand.nextInt(20);
+			list.insertTail(array[i]);
 		}
 
 		System.out.println(list.toString());
@@ -30,5 +32,9 @@ public class TesteLInearSearch {
 		list.LinearSearch(15);
 		System.out.println();
 		list.binarySearch(05);
+		
+		RecursividadeBinarySearch rc = new RecursividadeBinarySearch();
+		
+		System.out.println(rc.recursividadeBinarySearch(array, 12));
 	}
 }
