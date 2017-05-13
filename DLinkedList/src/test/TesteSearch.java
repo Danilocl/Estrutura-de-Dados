@@ -29,9 +29,9 @@ public class TesteSearch {
 
 		System.out.println("\n" + list.toString());
 		System.out.println();
-		list.LinearSearch(15);
+		System.out.println(list.LinearSearch(15));
 		System.out.println();
-		list.binarySearch(05);
+		System.out.println(list.binarySearch(05));
 		
 		RecursividadeBinarySearch rc = new RecursividadeBinarySearch();
 		
