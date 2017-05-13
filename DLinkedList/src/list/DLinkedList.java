@@ -186,7 +186,6 @@ public class DLinkedList {
 		Node temp = this.head;
 		for (int i = 0; i < countSize; i++) {
 			if (temp.getContent() == key) {
-				System.out.println("O número: " + key + " está na posição: " + i);
 				return true;
 			}
 			temp = temp.getNext();
@@ -209,7 +208,6 @@ public class DLinkedList {
 			int middleContent = getNode(middle).getContent();
 
 			if (key == middleContent) {
-				System.out.println("O número " + key + " está " + " na posição: " + middleContent);
 				return true;
 			}
 			// se o valor for menor que o meio, a ultima posição irá receber o
