@@ -171,6 +171,111 @@ public class Lista {
 		}
 		return list;
 	}
-	
-	
+
+	public boolean linearSearch(int key) {
+		Node temp = this.head;
+		for (int i = 0; i < this.countSize; i++) {
+			if (key == temp.getContent()) {
+				return true;
+			}
+			temp.getNext();
+		}
+		return false;
+	}
+
+	public boolean binarySearch(int key) {
+
+		int first = 0;
+		int last = this.countSize - 1;
+		int middle;
+		while (first <= last) {
+
+			middle = (first + last) / 2;
+			int middleContent = getNode(middle).getContent();
+
+			if (key == middleContent) {
+				return true;
+			}
+			if (key < middleContent) {
+				last = middle - 1;
+			}
+			if (key > middleContent) {
+				first = middle + 1;
+			}
+		}
+		return false;
+	}
+
+	public void bubbleSort() {
+		Node temp1;
+		for (int i = 0; i < this.countSize - 1; i++) {
+
+			for (int j = 0; j < this.countSize - 1; j++) {
+
+				temp1 = getNode(j);
+				Node temp2 = getNode(j + 1);
+
+				if (temp1.getContent() > temp2.getContent()) {
+
+					temp1.setNext(temp2.getNext());
+
+					if (temp1 == this.head) {
+						temp2.getNext().setPrevious(temp1);
+						temp2.setNext(temp1);
+						temp1.setPrevious(temp2);
+						temp2.setPrevious(this.tail);
+						temp2 = this.head;
+
+					}
+					if (temp2 == this.tail) {
+						temp2.setNext(temp1);
+						temp1.setPrevious(temp2);
+						temp1.setNext(this.head);
+						temp1 = this.tail;
+					} else {
+						temp2.getNext().setPrevious(temp1);
+						temp1.setNext(temp2.getNext());
+						temp1.getPrevious().setNext(temp2);
+						temp2.setPrevious(temp1.getPrevious());
+						temp2.setNext(temp1);
+						temp1.setPrevious(temp2);
+
+					}
+				}
+			}
+
+		}
+	}
+
+	public int[] selectionSort(int[] array) {
+
+		Node temp1 = this.head;
+		// Node temp2 = this.head;
+		Node smallerIndex;
+
+		for (int i = 0; i < this.countSize - 1; i++) {
+			smallerIndex = getNode(i);
+
+			for (int j = i + 1; j < this.countSize; j++) {
+				temp1 = getNode(j);
+
+				if (temp1.getContent() < smallerIndex.getContent()) {
+					if (smallerIndex == this.head) {
+						temp1.getNext().setPrevious(smallerIndex);
+						temp1.setNext(smallerIndex);
+						smallerIndex.setPrevious(temp1);
+						temp1.setPrevious(this.tail);
+						temp1 = this.head;
+					}
+				}
+
+			}
+			// Node smallerContent = temp1;
+			smallerIndex.getNext().setNext(this.head);
+			// smallerIndex = temp2;
+			smallerIndex = this.head;
+		}
+		return array;
+	}
+
 }
