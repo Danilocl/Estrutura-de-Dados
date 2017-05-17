@@ -15,8 +15,11 @@ public class main {
 		lista.addFinal(90);
 		lista.addFinal(70);
 		lista.addFinal(76);
-		lista.addPos(3, 2);
+		lista.addPos(2, 6);
 	    
+		System.out.println(lista.toString());
+		
+		lista.selectionSort();
 		
 		System.out.println(lista.toString());
 		
