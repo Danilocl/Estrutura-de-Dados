@@ -206,12 +206,11 @@ public class Lista {
 	}
 
 	public void bubbleSort() {
-		Node temp1;
-		for (int i = 0; i < this.countSize - 1; i++) {
+		for (int i = 0; i < this.countSize; i++) {
 
 			for (int j = 0; j < this.countSize - 1; j++) {
 
-				temp1 = getNode(j);
+				Node temp1 = getNode(j);
 				Node temp2 = getNode(j + 1);
 
 				if (temp1.getContent() > temp2.getContent()) {
@@ -222,11 +221,11 @@ public class Lista {
 						temp2.getNext().setPrevious(temp1);
 						temp2.setNext(temp1);
 						temp1.setPrevious(temp2);
-						temp2.setPrevious(this.tail);
 						temp2 = this.head;
+						this.tail.setNext(this.head);
 
 					}
-					if (temp2 == this.tail) {
+					else if (temp2 == this.tail) {
 						temp2.setNext(temp1);
 						temp1.setPrevious(temp2);
 						temp1.setNext(this.head);
