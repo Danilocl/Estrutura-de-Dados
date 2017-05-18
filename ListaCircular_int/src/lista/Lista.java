@@ -231,8 +231,7 @@ public class Lista {
 						temp2.setPrevious(temp1.getPrevious());
 						temp1.getPrevious().setNext(temp2);
 						temp1.setPrevious(temp2);
-					} 
-					else {
+					} else {
 						temp2.getNext().setPrevious(temp1);
 						temp2.setNext(temp1);
 						temp1.getPrevious().setNext(temp2);
@@ -255,6 +254,7 @@ public class Lista {
 		 */
 		for (int i = 0; i < this.countSize - 1; i++) {
 			smallerIndex = getNode(i);
+			Node temp2 = getNode(i);
 			/**
 			 * pega o próximo nó
 			 */
@@ -269,17 +269,36 @@ public class Lista {
 					smallerIndex = temp1;
 					positionToChange = j;
 				}
-				if (positionToChange != -1) {
 
-					RemovePos(positionToChange);
+			}
+			if (temp2 == this.head) {
 
-					addPos(i, smallerIndex.getContent());
+				RemovePos(positionToChange);
 
-				}
+				addPos(i, smallerIndex.getContent());
+				// smallerIndex.setNext(temp2);
+				// temp2.setPrevious(smallerIndex);
+				// smallerIndex.setPrevious(this.tail);
+				// smallerIndex = this.head;
+				// temp2 = smallerContent;
 
+			}
+			if (temp2 == this.tail) {
+				// temp2.getPrevious().setNext(smallerIndex);
+				// smallerIndex.setNext(temp2);
+				// temp2.setPrevious(smallerIndex);
+				// temp2.setNext(this.head);
+				// temp2 = smallerIndex;
+			} else {
+				// smallerIndex.setNext(temp2);
+				// temp2.setPrevious(smallerIndex);
 			}
 
 		}
+		// Node smallerContent = temp1;
+		// smallerIndex.getNext().setNext(this.head);
+		// // smallerIndex = temp2;
+		// smallerIndex = this.head;
 
 	}
 }
