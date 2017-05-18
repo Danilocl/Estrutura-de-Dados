@@ -158,7 +158,45 @@ public class Lista {
 
 		}
 	}
+	public void bubbleSort() {
+		for (int i = 0; i < this.countSize; i++) {
 
+			for (int j = 0; j < this.countSize - 1; j++) {
+
+				Node temp1 = getNode(j);
+				Node temp2 = getNode(j + 1);
+
+				if (temp1.getContent() > temp2.getContent()) {
+
+					temp1.setNext(temp2.getNext());
+
+					if (temp1 == this.head) {
+						temp2.getNext().setPrevious(temp1);
+						temp2.setNext(temp1);
+						temp1.setPrevious(temp2);
+						temp2 = this.head;
+						this.tail.setNext(this.head);
+
+					}
+					else if (temp2 == this.tail) {
+						temp2.setNext(temp1);
+						temp1.setPrevious(temp2);
+						temp1.setNext(this.head);
+						temp1 = this.tail;
+					} else {
+						temp2.getNext().setPrevious(temp1);
+						temp1.setNext(temp2.getNext());
+						temp1.getPrevious().setNext(temp2);
+						temp2.setPrevious(temp1.getPrevious());
+						temp2.setNext(temp1);
+						temp1.setPrevious(temp2);
+
+					}
+				}
+			}
+
+		}
+	}
 	/**
 	 * concatena os nós
 	 */

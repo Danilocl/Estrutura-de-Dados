@@ -177,7 +177,7 @@ public class Lista {
 			if (key == temp.getContent()) {
 				return true;
 			}
-			temp.getNext();
+			temp = temp.getNext();
 		}
 		return false;
 	}
@@ -220,22 +220,23 @@ public class Lista {
 					if (temp1 == this.head) {
 						temp2.getNext().setPrevious(temp1);
 						temp2.setNext(temp1);
+						temp2.setPrevious(this.tail);
+						this.head = temp2;
 						temp1.setPrevious(temp2);
-						temp2 = this.head;
-						this.tail.setNext(this.head);
 
-					}
-					else if (temp2 == this.tail) {
+					} else if (temp2 == this.tail) {
 						temp2.setNext(temp1);
-						temp1.setPrevious(temp2);
 						temp1.setNext(this.head);
-						temp1 = this.tail;
-					} else {
+						this.tail = temp1;
+						temp2.setPrevious(temp1.getPrevious());
+						temp1.getPrevious().setNext(temp2);
+						temp1.setPrevious(temp2);
+					} 
+					else {
 						temp2.getNext().setPrevious(temp1);
-						temp1.setNext(temp2.getNext());
+						temp2.setNext(temp1);
 						temp1.getPrevious().setNext(temp2);
 						temp2.setPrevious(temp1.getPrevious());
-						temp2.setNext(temp1);
 						temp1.setPrevious(temp2);
 
 					}
@@ -246,68 +247,39 @@ public class Lista {
 	}
 
 	public void selectionSort() {
-
-		// Node temp2 = this.head;
 		Node smallerIndex;
 		Node temp1 = this.head;
-
+		/*
+		 * pega a posição e atribui ao node "smallerIndex" e "temp2" a medida
+		 * que o for "for" rodado
+		 */
 		for (int i = 0; i < this.countSize - 1; i++) {
-			/*
-			 * pega a posição e atribui ao node "smallerIndex" e "temp2" a
-			 * medida que o for "for" rodado
-			 */
 			smallerIndex = getNode(i);
-			Node temp2 = getNode(i);
 			/**
 			 * pega o próximo nó
 			 */
+			int positionToChange = -1;
 			for (int j = i + 1; j < this.countSize; j++) {
 				temp1 = getNode(j);
 				/**
-				 * procura a posição que seja menor que o "smallerIndex" 
-				 * caso ache "smallerIndex" será atualizado 
+				 * procura a posição que seja menor que o "smallerIndex" caso
+				 * ache "smallerIndex" será atualizado
 				 */
-				//erro:esta pegando a menor posição e a próxima
 				if (temp1.getContent() < smallerIndex.getContent()) {
 					smallerIndex = temp1;
+					positionToChange = j;
+				}
+				if (positionToChange != -1) {
+
+					RemovePos(positionToChange);
+
+					addPos(i, smallerIndex.getContent());
+
 				}
 
-			}
-			//não sei se é necessário
-			Node smallerContent = smallerIndex;
-			/**
-			 * move o "smallerIndex" na primeira posição
-			 */
-			//acredito está perdendo referências
-			if (temp2 == this.head) {
-				smallerIndex.setNext(temp2);
-				temp2.setPrevious(smallerIndex);
-				smallerIndex.setPrevious(this.tail);
-				smallerIndex = this.head;
-				temp2 = smallerContent;
-			}
-			/**
-			 * move para ultima posição
-			 */
-			if (temp1 == this.tail) {
-				temp2.getPrevious().setNext(smallerIndex);
-				smallerIndex.setNext(temp2);
-				temp2.setPrevious(smallerIndex);
-				temp2.setNext(this.head);
-				temp2 = smallerIndex;
-				
-			} else {
-				smallerIndex.setNext(temp2);
-				temp2.setPrevious(smallerIndex);
 			}
 
 		}
 
-		// Node smallerContent = temp1;
-		// smallerIndex.getNext().setNext(this.head);
-		// // smallerIndex = temp2;
-		// smallerIndex = this.head;
-		// }return array;
 	}
-
 }
