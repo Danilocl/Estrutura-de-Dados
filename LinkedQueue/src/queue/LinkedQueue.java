@@ -10,6 +10,7 @@ import java.util.NoSuchElementException;
  * @author Danilo
  *
  */
+///
 public class LinkedQueue {
 	private Node first;
 	private Node last;
