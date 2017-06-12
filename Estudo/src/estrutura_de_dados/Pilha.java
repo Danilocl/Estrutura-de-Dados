@@ -1,15 +1,27 @@
 package estrutura_de_dados;
 
+/**
+ * 
+ * @author Danilo
+ *
+ */
 public class Pilha {
 
 	int elementos[];
 	int topo;
 
+	/**
+	 * Construtor da Classe
+	 */
 	public Pilha() {
 		this.elementos = new int[10];
 		this.topo = -1;
 	}
 
+	/***
+	 * Implementa o empilhamento
+	 * @param content
+	 */
 	public void push(int content) {
 		this.topo++;
 		if (isFull()) {
@@ -18,6 +30,10 @@ public class Pilha {
 		this.elementos[topo] = content;
 	}
 
+	/**
+	 * Implementa o desempilhamento
+	 * @return
+	 */
 	public int pop() {
 		if (isEmpty()) {
 			throw new RuntimeException("\n A lista está vazia");
@@ -29,14 +45,26 @@ public class Pilha {
 
 	}
 
+	/**
+	 * Verifi se está vazia
+	 * @return
+	 */
 	public boolean isEmpty() {
 		return (topo == -1);
 	}
 
+	/**
+	 * Verfiica se está cheia
+	 * @return
+	 */
 	public boolean isFull() {
 		return (this.elementos[topo] >= 9);
 	}
 
+	/**
+	 * Retorna o topo da Pilha
+	 * @return
+	 */
 	public int topo() {
 		if (isEmpty()) {
 			throw new RuntimeException("A lista está vazia");
@@ -44,6 +72,10 @@ public class Pilha {
 		return elementos[topo];
 	}
 
+	/**
+	 * retorna o tamanho da Pilha
+	 * @return
+	 */
 	public int tamanho() {
 		if (isEmpty()) {
 			throw new RuntimeException(" A lista está vazia");
@@ -51,6 +83,9 @@ public class Pilha {
 		return topo + 1;
 	}
 
+	/**
+	 * Concatena os elementos
+	 */
 	public String toString() {
 		String str = "";
 
