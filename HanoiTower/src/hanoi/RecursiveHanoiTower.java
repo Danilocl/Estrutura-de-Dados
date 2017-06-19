@@ -1,5 +1,9 @@
 package hanoi;
-
+/**
+ * Código do demonio
+ * @author Danilo
+ *
+ */
 public class RecursiveHanoiTower {
 	
 	//Realiza o movimento
