@@ -4,7 +4,7 @@
  * 
  * @author Danilo
  *
- */
+ *///
 public class Pilha {
 
 	int elementos[];
