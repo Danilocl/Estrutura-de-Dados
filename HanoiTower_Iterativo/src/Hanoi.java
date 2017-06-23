@@ -1,35 +1,58 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
-//
+import pilha.Pilha;
+
+/**
+ * 
+ * @author Danilo
+ *
+ */
 public class Hanoi {
 
-	int disks;
-	private List<Pilha> discos = new ArrayList<Pilha>();
+	Pilha p = new Pilha();
 
-	Scanner in = new Scanner(System.in);
-
-	// Apenas pega os dados necessários
-	public void dados() {
-
-		Pilha p = new Pilha();
-
-		System.out.println("Digite o número de discos");
-		disks = in.nextInt();
-
+	// realiza e imprimi os movimentos do souce para o destination
+	public void move(int source, int destination) {
+		System.out.println(source + " -> " + destination);
 	}
 
-	// realiza os movimentos
-	public void mover() {
-		int b = 1;
-		while (disks >= b) {
-			int jump = (int) Math.pow(2, b);
+	// implementa a torre de hanoi
+	public void execute(int n, int source, int destination, int aux) {
+
+		Comand currentComand = new Comand(n, source, destination, aux);
+		// empilha os novos comandos
+		p.push(currentComand);
+		// verifica se está vazia
+		while (!p.isEmpty()) {
+
+			if (n > 1) {
+				n--;
+				n = currentComand.getN();
+				source = currentComand.getSource();
+				destination = currentComand.getDestination();
+				aux = currentComand.getAux();
+				// guarda os movimentos a serem empilhados
+				currentComand = new Comand(n, source, destination, aux);
+				// empilha os movimentos
+				p.push(currentComand);
+			} else {
+				source = currentComand.getSource();
+				destination = currentComand.getDestination();
+				aux = currentComand.getAux();
+				// desempilha os movimentos
+				currentComand = (Comand) p.pop();
+				// executa os movimentos
+				move(currentComand.getSource(), currentComand.getDestination());
+
+			}
+			// Ultimo empilhamento
+			if (n > 1) {
+				n--;
+				currentComand = new Comand(n, aux, destination, source);
+				p.push(currentComand);
+			}
+
+			// int a = 0;
+			// float s = (float) a;
 		}
-	}
-
-	private void printf(String string, int o2, int d2) {
-		// TODO Auto-generated method stub
-
 	}
 }
