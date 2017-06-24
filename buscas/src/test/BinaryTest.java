@@ -2,8 +2,8 @@ package test;
 
 import java.util.Random;
 
+import ordenacao.BubbleSort;
 import search.BinarySearch;
-import search.BubbleSort;
 
 public class BinaryTest {
 

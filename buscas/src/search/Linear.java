@@ -13,7 +13,7 @@ public class Linear {
 		for (int i = 0; i < array.length; i++) {
 
 			if (array[i] == key) {
-				return true;
+				return true;				
 			}
 		}
 		return false;
